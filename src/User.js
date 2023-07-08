@@ -1,43 +1,40 @@
 // Importing the necessary dependencies
-import React from 'react';
+import React, { useState } from 'react';
 
-// User class definition
-class User extends React.Component {
-    constructor(props) {
-        super(props);
-        // Initializing the state with the user details
-        this.state = {
-            name: props.name,
-            location: props.location,
-            interests: props.interests,
-            values: props.values,
-            hobbies: props.hobbies
-        };
-    }
+// User functional component definition
+const User = (props) => {
+    // Initializing the state with the user details
+    const [name, setName] = useState(props.name);
+    const [location, setLocation] = useState(props.location);
+    const [interests, setInterests] = useState(props.interests);
+    const [values, setValues] = useState(props.values);
+    const [hobbies, setHobbies] = useState(props.hobbies);
 
     // Function to update the user details
-    updateUserDetails = (details) => {
-        this.setState(details);
+    const updateUserDetails = (details) => {
+        setName(details.name);
+        setLocation(details.location);
+        setInterests(details.interests);
+        setValues(details.values);
+        setHobbies(details.hobbies);
     }
 
     // Function to get the user details
-    getUserDetails = () => {
-        return this.state;
+    const getUserDetails = () => {
+        return { name, location, interests, values, hobbies };
     }
 
     // Rendering the user details
-    render() {
-        return (
-            <div>
-                <h2>{this.state.name}</h2>
-                <p>{this.state.location}</p>
-                <p>{this.state.interests}</p>
-                <p>{this.state.values}</p>
-                <p>{this.state.hobbies}</p>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h2>{name}</h2>
+            <p>{location}</p>
+            <p>{interests}</p>
+            <p>{values}</p>
+            <p>{hobbies}</p>
+        </div>
+    );
 }
 
-// Exporting the User class
+// Exporting the User component
 export default User;
