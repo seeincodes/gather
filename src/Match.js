@@ -1,50 +1,48 @@
-// Importing React for component creation
-import React from 'react';
+// Importing React and useState for component creation
+import React, { useState, useEffect } from 'react';
 
 // Importing User model
 import User from './User';
 
-// Match class
-class Match extends React.Component {
-    constructor(props) {
-        super(props);
-        // State of the component
-        this.state = {
-            user1: new User(), // First user in the match
-            user2: new User(), // Second user in the match
-            matchTime: new Date(), // Time when the match was made
-            status: 'active' // Status of the match
-        };
-    }
+// Match function component
+const Match = () => {
+    // State of the component
+    const [user1, setUser1] = useState(new User()); // First user in the match
+    const [user2, setUser2] = useState(new User()); // Second user in the match
+    const [matchTime, setMatchTime] = useState(new Date()); // Time when the match was made
+    const [status, setStatus] = useState('active'); // Status of the match
 
     // Method to check if the match is still within the 48-hour limit
-    isWithinLimit() {
+    const isWithinLimit = () => {
         const currentTime = new Date();
-        const timeDifference = currentTime - this.state.matchTime;
+        const timeDifference = currentTime - matchTime;
         const timeLimit = 48 * 60 * 60 * 1000; // 48 hours in milliseconds
 
         // If the time difference is less than the limit, the match is still active
         if (timeDifference < timeLimit) {
-            this.setState({ status: 'active' });
+            setStatus('active');
             return true;
         } else {
-            this.setState({ status: 'expired' });
+            setStatus('expired');
             return false;
         }
     }
 
+    // UseEffect to check the match status when the component renders
+    useEffect(() => {
+        isWithinLimit();
+    }, []);
+
     // Render method
-    render() {
-        return (
-            <div>
-                <h2>Match</h2>
-                <p>User 1: {this.state.user1.name}</p>
-                <p>User 2: {this.state.user2.name}</p>
-                <p>Status: {this.state.status}</p>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h2>Match</h2>
+            <p>User 1: {user1.name}</p>
+            <p>User 2: {user2.name}</p>
+            <p>Status: {status}</p>
+        </div>
+    );
 }
 
-// Exporting Match class
+// Exporting Match function component
 export default Match;
