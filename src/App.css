@@ -1,17 +1,25 @@
+/* High level styles for the App */
+
 .App {
   text-align: center;
 }
+
+/* Logo styles */
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/* Animation for the logo */
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+/* Header styles */
 
 .App-header {
   background-color: #282c34;
@@ -24,9 +32,13 @@
   color: white;
 }
 
+/* Link styles */
+
 .App-link {
   color: #61dafb;
 }
+
+/* Animation keyframes for the logo */
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +47,43 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Styles for the User component */
+
+.User {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* Styles for the Match component */
+
+.Match {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* Styles for the Calendar component */
+
+.Calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
