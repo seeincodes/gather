@@ -5,7 +5,6 @@ import Donation from './Donation';
 // Functional component for the App
 function App() {
   return (
-
     <div>
       <h1>Gather</h1>
       <Donation />
